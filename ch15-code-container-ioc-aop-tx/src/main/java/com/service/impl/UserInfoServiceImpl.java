@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
  * @author yu
  * @date 2020/6/18
  */
+
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 

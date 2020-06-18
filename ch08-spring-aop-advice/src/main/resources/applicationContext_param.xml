@@ -23,12 +23,12 @@
      总而言之: 想让通知方法获取到传递给目标方法的参数需要这么做:
      1. args表达式里面的名字与通知方法的名字与个数匹配即可,此时不需要配置通知的arg-names
      配置代码如下:
-      <aop:pointcut id="myPointcut1" expression="execution(* com.service.EmployeeServiceImpl.*(..)) and args(m,n)"/>
+      <aop:pointcut id="myPointcut1" expression="execution(* com.service.service.EmployeeServiceImpl.*(..)) and args(m,n)"/>
       <aop:before method="before2" pointcut-ref="myPointcut1" />
 
      2. args表达式里面的名字任意,此时就需要在通知方法的arg-names配置得与args表达式名字一样
      此时这两者配置的名字不需要与通知方法的形参名一样.
-     <aop:pointcut id="myPointcut1" expression="execution(* com.service.EmployeeServiceImpl.*(..)) and args(x1,y1)"/>
+     <aop:pointcut id="myPointcut1" expression="execution(* com.service.service.EmployeeServiceImpl.*(..)) and args(x1,y1)"/>
       <aop:before method="before2" pointcut-ref="myPointcut1" arg-names="x1,y1"/>
 
       3.由于所有的通知方法都可以添加JoinPoint类型作为第一个参数,而这个类型

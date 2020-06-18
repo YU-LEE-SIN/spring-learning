@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <bean id="log" class="com.service.LogImpl"/>
-    <bean id="serviceOrder" class="com.service.EmpServiceImpl"/>
+    <bean id="log" class="com.service.service.LogImpl"/>
+    <bean id="serviceOrder" class="com.service.service.EmpServiceImpl"/>
     <!--
     在同一个切面中,配置的同类型通知,其顺序官方没有明确的说明
 
@@ -16,7 +16,7 @@
     数字小的先执行.
     -->
     <aop:config>
-        <aop:pointcut id="myPointCut" expression="execution(* com.service.EmpServiceImpl.*(..))"/>
+        <aop:pointcut id="myPointCut" expression="execution(* com.service.service.EmpServiceImpl.*(..))"/>
         <aop:aspect ref="log" order="2">
             <aop:around method="aroundAdvice" pointcut-ref="myPointCut"/>
         </aop:aspect>

@@ -4,12 +4,12 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="logImpl" class="com.service.LogImpl"/>
-    <bean id="service" class="com.service.EmpServiceImpl"/>
+    <bean id="logImpl" class="com.service.service.LogImpl"/>
+    <bean id="service" class="com.service.service.EmpServiceImpl"/>
 
     <aop:config>
         <!--放在这里的表达式,意味着可以被多个切面类引用-->
-        <aop:pointcut id="myPointcut" expression="execution(* com.service.EmpServiceImpl.*(..))"/>
+        <aop:pointcut id="myPointcut" expression="execution(* com.service.service.EmpServiceImpl.*(..))"/>
             <aop:aspect ref="logImpl">
 
                <!--

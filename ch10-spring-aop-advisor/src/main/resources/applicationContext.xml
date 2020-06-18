@@ -5,10 +5,10 @@
 
     <bean id="myAdvisor" class="com.advisor.MyAdvisor"/>
 
-    <bean id="empService" class="com.service.impl.EmpServiceImpl"/>
+    <bean id="empService" class="com.service.service.impl.EmpServiceImpl"/>
 
     <aop:config>
-        <aop:pointcut id="myPointCut" expression="execution(* com.service..*.*(..))"/>
+        <aop:pointcut id="myPointCut" expression="execution(* com.service.service..*.*(..))"/>
 
         <aop:advisor advice-ref="myAdvisor"
                      pointcut-ref="myPointCut"/>

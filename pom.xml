@@ -23,6 +23,7 @@
         <module>ch13-annotation-container-ioc-aop</module>
         <module>ch14-annotaion-tx</module>
         <module>ch15-code-container-ioc-aop-tx</module>
+        <module>ch15-spring-mybatis-code</module>
 
     </modules>
 

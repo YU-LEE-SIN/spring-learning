@@ -20,6 +20,7 @@
         <module name="ch06-spring-mybatis-druid" />
         <module name="ch09-spring-aop-pointcut" />
         <module name="ch10-spring-aop-advisor" />
+        <module name="ch15-spring-mybatis-code" />
         <module name="ch07-spring-aop" />
       </profile>
     </annotationProcessing>

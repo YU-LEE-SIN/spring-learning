@@ -25,7 +25,7 @@
 
     <bean id="deptDao" class="com.dao.DeptDao" parent="baseDao"/>
 
-    <bean id="service" class="com.service.UserInfoServiceImpl" autowire="byType"/>
+    <bean id="service" class="com.service.service.UserInfoServiceImpl" autowire="byType"/>
 
     <!--
     事务管理器:主要用来管理物理连接,事务提交,回滚等功能
@@ -63,7 +63,7 @@
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="serviceTx" expression="execution(* com.service..*.*(..))"/>
+        <aop:pointcut id="serviceTx" expression="execution(* com.service.service..*.*(..))"/>
         <aop:advisor advice-ref="txAdvisor" pointcut-ref="serviceTx"/>
     </aop:config>
 
