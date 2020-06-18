@@ -18,6 +18,8 @@
         <module>ch07-spring-aop</module>
         <module>ch08-spring-aop-advice</module>
         <module>ch09-spring-aop-pointcut</module>
+        <module>ch10-spring-aop-advisor</module>
+        <module>ch11-spring-tx</module>
 
     </modules>
 

@@ -19,6 +19,10 @@
     <file url="file://$PROJECT_DIR$/ch08-spring-aop-advice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ch09-spring-aop-pointcut/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ch09-spring-aop-pointcut/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch10-spring-aop-advisor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch10-spring-aop-advisor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch11-spring-tx/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch11-spring-tx/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

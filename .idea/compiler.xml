@@ -9,10 +9,12 @@
         <module name="ch03-spring-autowire" />
         <module name="ch09-spring-aop-pointcut" />
         <module name="ch06-spring-mybatis-druid" />
+        <module name="ch10-spring-aop-advisor" />
         <module name="ch07-spring-aop" />
         <module name="ch02-spring-ioc" />
         <module name="ch01-spring-container" />
         <module name="ch05-spring-dbutils-druid" />
+        <module name="ch11-spring-tx" />
         <module name="ch08-spring-aop-advice" />
         <module name="ch05-spring-dbutil-druid" />
         <module name="ch04-spring-log-logback" />
@@ -20,6 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ch05-spring-dbutil-druil" target="8" />
+      <module name="ch05-spring-dbutils-druid" target="8" />
       <module name="ch05-spring-dbutils-druil" target="8" />
     </bytecodeTargetLevel>
   </component>

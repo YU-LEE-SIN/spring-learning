@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/demo"/>
+        <property name="password" value="root"/>
+        <property name="username" value="root"/>
+
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="baseDao" class="com.dao.DeptDao"  abstract="true">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--<da:scan base-package="com.dao"/>-->
+
+    <bean id="userInfoDao" class="com.dao.UserInfoDao" parent="baseDao"/>
+
+    <bean id="deptDao" class="com.dao.DeptDao" parent="baseDao"/>
+
+    <bean id="service" class="com.service.UserInfoServiceImpl" autowire="byType"/>
+
+    <!--
+    事务管理器:主要用来管理物理连接,事务提交,回滚等功能
+   有了事务配置,对我们的dao里面用的连接相关的信息就有了要求:
+   1.因为这个事务管理器是针对DataSource,所以我们的dao必须用"同一个"dataSource
+   2.DataSource获取方法必须是Spring提供的方式
+    -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--
+        tx:advice的事务管理器设置:
+        如果你配置的事务管理器的名字就叫做transactionManager,
+        那么transaction-manager就可以不用设置
+    -->
+    <tx:advice id="txAdvisor" transaction-manager="txManager">
+        <!--
+        可以配置多个method,一般的配置,查询操作用只读事务,会优化性能
+        它也支持通配符*
+
+         默认情况下,spring会对运行时异常产生回滚,检查异常不回滚
+        如果想针对检查异常也回滚,那么就需要配置rollback-for
+
+        mybatis这种持久层框架,其所有数据库操作的异常都是运行时异常
+        所以method的rollback-for保留默认即可,不需要额外配置
+
+        事务传播:transaction propogation:主要指的是先前的事务信息
+        如何影响后开启的事务-->
+
+        <!--tx:attributes是必须配置,如果不配置,整个就运行在非事务环境下-->
+        <tx:attributes>
+            <tx:method name="deleteDeptById" read-only="true"/>
+            <tx:method name="*ById" propagation="REQUIRED" rollback-for="com.dao.MyCheckEx"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="serviceTx" expression="execution(* com.service..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvisor" pointcut-ref="serviceTx"/>
+    </aop:config>
+
+</beans>
