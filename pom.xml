@@ -20,6 +20,7 @@
         <module>ch09-spring-aop-pointcut</module>
         <module>ch10-spring-aop-advisor</module>
         <module>ch11-spring-tx</module>
+        <module>ch13-annotation-container-ioc-aop</module>
 
     </modules>
 

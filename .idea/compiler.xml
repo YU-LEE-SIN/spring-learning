@@ -18,6 +18,7 @@
         <module name="ch08-spring-aop-advice" />
         <module name="ch05-spring-dbutil-druid" />
         <module name="ch04-spring-log-logback" />
+        <module name="ch13-annotation-container-ioc-aop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
