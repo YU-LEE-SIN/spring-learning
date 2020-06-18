@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--先注入一个dao 让spring 管理-->
+    <bean id="userDao" class="org.complex.UserDaoImpl"/>
+
+    <!--构造函数的注入形式-->
+    <bean id="userImpl" class="org.complex.UserServiceImpl">
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+    <!--setter方法注入(属性注入)-->
+    <bean id="userService2" class="org.complex.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

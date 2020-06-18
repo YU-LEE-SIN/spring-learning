@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--用构造函数实例化 使用默认构造函数-->
+    <bean id="factory" class="org.factory.ExampleA">
+    </bean>
+
+    <!--第2中配置bean的方式:工厂性质的类+静态方法-->
+    <!--这种配置方法createA方法必须是静态的-->
+    <bean id="factory2"
+          class="org.factory.Afactory"
+          factory-method="createA">
+    </bean>
+
+    <!--
+    第3种配置bean的方式,利用一个工厂性质的类+实例方法
+    注意:这种配置方式,在配置factory-bean时不需要指定class属性
+     -->
+    <bean id="factoryA" class="org.factory.Afactory"/>
+
+    <bean id="factory3"
+          factory-bean="factoryA"
+          factory-method="createB">
+    </bean>
+
+    <!--
+    第4种配置bean的形式,利用FactoryBean
+
+    下面配置方式返回的A这个类的实例
+    原因是因为MyFactoryBean这个类实现了FactoryBean这个接口
+    ,执行这个接口的方法。
+    如果没有这个实现,那么返回的就是MyFactoryBean这个实例本身
+    -->
+
+    <bean id="factory4"
+          class="org.factory.MyFactoryBean">
+    </bean>
+</beans>

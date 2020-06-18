@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="log" class="com.log.LogAspect"/>
+    <bean id="service" class="com.service.user.impl.UserInfoImpl"/>
+
+
+    <!--
+     https://docs.spring.io/spring/docs/5.2.0.RELEASE/spring-framework-reference/core.html#aop-pointcuts
+    https://blog.csdn.net/ABCD898989/article/details/50809321
+
+    1.切点指示器(PCD:PointCutDesigner):指示器可以理解为一种描述
+        找到方法的方式.spring支持的切点指示器有如下几个:
+         1.1 execution:用来匹配连接点方法的,用的最多的一个指示器
+         1.2 within:英文的意思是:在某某之内,一般就是指的是在某个类内部
+         within(com.service.A)就是会对A这个类的方法进行aop代理
+         1.3 this:指的就是动态代理生成的对象,这种指示器一般表示某个动态代理
+         对象是某个类型,比如this(com.service.EmployeeService),就表示
+         动态代理对象是EmployeeService的实现类
+         1.4 target:指的是被代理的对象.表明动态代理必须是target的类型(满足is-a关系)
+         1.5 args:此指示器是在方法的参数层面来描述,比如args(integer,String)就表示
+         所有有2个参数,并且类型分别是integer,string的方法
+         1.6 @target:就表示目标类型上有特定注解修饰的目标对象
+         表达式中指定父类时和接口时是可以被aop代理的，这里不能使用通配符（. . * *）。
+         必须指定一个具体的目标。
+         @target(com.MyFirstAnnotation),就会找所有被spring
+         管理的bean上面有MyFirstAnnotation注解的目标类。
+         正在执行的类上有特定注解。
+         1.7 @args:与arg类似,只不过是表明参数上有特定注解的
+         1.8 @Within:与within类似,只不过是表明类上有特定的注解修饰
+         执行的方法所声明的类型上有指定的注解
+         1.9 @annotation:指的是连接点方法上有特定注解
+         指的是连接点方法上有特定注解
+         1.10 bean:这个指示器不是aop联盟的标准,是spring自己提供的
+         指示特定bean的名字的指示器。
+         bean(emp)表示给emp这个bean进行aop代理-->
+    <aop:config proxy-target-class="true">
+        <!-- 1.  execution(public * *(..)):找到所有的公有方法-->
+        <!-- <aop:pointcut id="myPointCut" expression="execution(public * * (..))"/>-->
+            <!--2.  execution(* get*(..)):找到以get开头的所有方法-->
+        <!--<aop:pointcut id="myPointCut" expression="execution(* get*(..))"/>-->
+        <!--3.execution(public * com.service.user.UserInfoService+.*(..))
+            + 表示接口的所有方法以及此接口实现类自己的方法都会被aop代理-->
+        <!--<aop:pointcut id="myPointCut" expression="execution(public * com.service.user.UserInfoService+.*(..))"/>-->
+       <!-- 4. public * com.service..*.*(..)) 表示com.service包以及子孙包下-->
+        <!--<aop:pointcut id="myPointCut" expression="execution(public * com.service..*.*(..))"/>-->
+        <!--  <aop:pointcut id="myPointCut" expression="this(com.service.user.UserInfoService)"/>-->
+        <!--within(com.service.A)就是会对A这个类的方法进行aop代理-->
+        <!--<aop:pointcut id="myPointCut" expression="within(com.service.user.impl.UserInfoImpl)"/>-->
+        <!--target:指的是被代理的对象.表明动态代理必须是target的类型(满足is-a关系)-->
+        <aop:pointcut id="myPointCut" expression="target(com.service.user.impl.UserInfoImpl)"/>
+        <!--<aop:pointcut id="myPointCut" expression="@target(org.springframework.transaction.annotation.Transactional)"/>-->
+        <aop:aspect ref="log" >
+            <aop:before method="before" pointcut-ref="myPointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

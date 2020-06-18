@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire-candidates="*Dao" default-autowire="byType">
+
+    <bean id="userDao" class="org.autowire.UserDaoImpl"></bean>
+
+    <!--
+    如果有多个bean符合自动装配
+    可以通过在所有符合条件的被装配bean上进行设置来解决
+    1.在想被注入的bean上设置primary=true,就表示用这个
+    2. 在不想被注入的bean上设置autowire-candidate=false
+
+    还可以在beans这个根元素上,配置default-autowire-type来设定
+    一个全局的自动装配类型,这样就不需要在每一个bean上进行设置了
+
+    beans上的default-autowire-candidates =设置作为候选baen的名字模式
+    多个之间用逗号分隔,比如*dao这个名字,意思就是以dao结尾的bean 的名字
+    -->
+    <bean id="userService" class="org.autowire.UserServiceImpl">
+    </bean>
+</beans>

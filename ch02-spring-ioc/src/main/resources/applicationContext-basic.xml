@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--setter方法注入(属性注入)-->
+   <!-- <bean id="dbConfig" class="org.basic.DbConfig" >
+        <property name="url" value="url.."/>
+        <property name="username" value="username"/>
+        <property name="password" value="root"/>
+        <property name="driverClassname" value="driver"/>
+    </bean>-->
+
+    <!-- 构造函数注入  最后一个是用setter注入(可以混合使用[构造函数注入 + setter注入])-->
+    <!--<bean id="dbConfig" class="org.basic.DbConfig" >
+        <constructor-arg name="url" value="url.."/>
+        <constructor-arg name="username" value="username"/>
+        <constructor-arg name="password" value="root"/>
+        <property name="driverClassname" value="driver"/>
+    </bean>-->
+
+    <!-- 下面的配置顺序与构造函数是一一对应,所以不再需要额外的设置-->
+    <!--<bean id="dbConfig" class="com.basic.DbConfig">
+        <constructor-arg value="url.."/>
+        <constructor-arg value="root"/>
+        <constructor-arg value="pwd"/>
+        <property name="driverClassname" value="driver"/>
+    </bean>-->
+
+    <!--配置顺序与类的构造函数顺序不一致时，需要额外的信息告诉
+   spring,谁赋值给谁-->
+    <bean id="dbConfig" class="org.basic.DbConfig">
+        <!--本来这个root应该是赋值给url,但因为加了name=username
+        所以就把root 赋值给了构造函数的第二个参数-->
+        <constructor-arg name="username" value="root" />
+        <constructor-arg name="password" value="pwd"/>
+        <constructor-arg name="url" value="url.."/>
+        <constructor-arg name="driverClassname" value="driver.."/>
+    </bean>
+    <!--  可用index确定位置  -->
+    <!--<bean id="dbConfig" class="com.basic.DbConfig>
+       <constructor-arg value="root" index="1" />
+       <constructor-arg value="pwd" index="2"/>
+       <constructor-arg value="url.." index="0"/>
+       <property name="driverClassname" value="driver"/>
+   </bean>-->
+
+
+    <bean id="addr" class="org.basic.Address">
+        <property name="city" value="Demacia"/>
+        <property name="province" value="Valoran"/>
+    </bean>
+
+    <bean id="userInfo" class="org.basic.UserInfo">
+        <property name="name" value="Fiona"/>
+        <!--    bean(内部bean)
+        只是给address属性使用,无法通过getBean方式得到这个对象
+        <property name="address" >
+            <bean class="com.basic.Address"/>
+        </property>
+        -->
+        <property name="address">
+            <bean class="org.basic.Address">
+                <property name="city" value="Demacia"/>
+                <property name="province" value="Valoran"/>
+            </bean>
+        </property>
+
+        <property name="addressList">
+            <list>
+                <ref bean="addr"/><!--引用addr这个bean-->
+                <!--<bean class="com.basic.Address">
+                    <property name="city" value="gd"/>
+                    <property name="province" value="zhuhai"/>
+                </bean>-->
+            </list>
+        </property>
+
+        <property name="hobbyList">
+            <list>
+                <value>basketball</value>
+                <value>play games</value>
+            </list>
+        </property>
+
+        <property name="xeuLi">
+            <set>
+                <value>junior middle school</value>
+                <value>middle school</value>
+            </set>
+        </property>
+
+        <property name="xueFen">
+            <map>
+                <entry key="Chinese" value="100"/>
+                <entry key="Mathematics" value="50"/>
+                <entry key="English" value="50"/>
+            </map>
+        </property>
+        <!--如果用props配置,值只能是字符串类型-->
+        <property name="properties">
+            <props>
+                <prop key="java">j</prop>
+                <prop key=".net">n</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

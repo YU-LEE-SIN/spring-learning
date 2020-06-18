@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="logImpl" class="com.service.LogImpl"/>
+    <bean id="service" class="com.service.EmpServiceImpl"/>
+
+    <aop:config>
+        <!--放在这里的表达式,意味着可以被多个切面类引用-->
+        <aop:pointcut id="myPointcut" expression="execution(* com.service.EmpServiceImpl.*(..))"/>
+            <aop:aspect ref="logImpl">
+
+               <!--
+                <aop:before method="before" pointcut-ref="myPointcut" />
+                <aop:after method="after" pointcut-ref="myPointcut"/>
+                <aop:after-returning method="afterReturn" pointcut-ref="myPointcut"/>
+                <aop:after-throwing method="throwAdvice" throwing="re" pointcut-ref="myPointcut"/>
+                -->
+
+                <aop:around method="aroundAdvice" pointcut-ref="myPointcut"/>
+            </aop:aspect>
+        </aop:config>
+    </beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/ch01-spring-container/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch01-spring-container/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch02-spring-ioc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch02-spring-ioc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch03-spring-autowire/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch03-spring-autowire/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch04-spring-log-logback/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch04-spring-log-logback/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch05-spring-dbutil-druid/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch05-spring-dbutil-druid/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch06-spring-mybatis-druid/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch06-spring-mybatis-druid/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch07-spring-aop/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch07-spring-aop/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch08-spring-aop-advice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch08-spring-aop-advice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch09-spring-aop-pointcut/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch09-spring-aop-pointcut/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    以下示例使用c:名称空间 基于构造函数的依赖注入相同的操作,
+     P: 基于属性
+      -->
+    <bean id="dataSource"
+          class="org.namespace.MyDataSource"
+          p:username="root" c:url="jdbc:mysql://url.." >
+        <property name="password">
+            <!--            该<null/>元素处理null的值。以下清单显示了一个示例-->
+            <null></null>
+        </property>
+    </bean>
+
+    <bean id="factory"
+          class="org.namespace.MySqlFactory"
+          p:dateSource-ref="dataSource"
+          c:_0-ref="dataSource">
+    </bean>
+</beans>

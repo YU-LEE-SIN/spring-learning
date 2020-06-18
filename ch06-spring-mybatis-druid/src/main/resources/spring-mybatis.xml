@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--指定mapper文件-->
+        <property name="mapperLocations" value="classpath*:mappers/**/*Mapper.xml"/>
+        <!--mybatis-config文件解析之后mybatis是用Configuration类型来代表(入口对象)-->
+        <property name="configuration">
+            <bean class="org.apache.ibatis.session.Configuration">
+                <!--配置显示sql的日志-->
+                <property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
+            </bean>
+        </property>
+        <property name="plugins">
+            <list>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            supportMethodsArguments=true
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--该标签是mybatis提供的一个注解扫描标签，通过自动扫描注解的机制，创建每个dao接口定义的bean
+        不然就自己写 <bean id="dao" ......>
+    -->
+    <mybatis:scan base-package="org.dao"/>
+</beans>
