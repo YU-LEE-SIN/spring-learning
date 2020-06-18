@@ -6,25 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ch08-spring-aop-advice" />
+        <module name="ch15-code-container-ioc-aop-tx" />
+        <module name="ch05-spring-dbutil-druid" />
+        <module name="ch02-spring-ioc" />
+        <module name="ch04-spring-log-logback" />
+        <module name="ch11-spring-tx" />
+        <module name="ch05-spring-dbutils-druid" />
+        <module name="ch14-annotaion-tx" />
+        <module name="ch01-spring-container" />
         <module name="ch03-spring-autowire" />
-        <module name="ch09-spring-aop-pointcut" />
+        <module name="ch13-annotation-container-ioc-aop" />
         <module name="ch06-spring-mybatis-druid" />
+        <module name="ch09-spring-aop-pointcut" />
         <module name="ch10-spring-aop-advisor" />
         <module name="ch07-spring-aop" />
-        <module name="ch02-spring-ioc" />
-        <module name="ch01-spring-container" />
-        <module name="ch05-spring-dbutils-druid" />
-        <module name="ch11-spring-tx" />
-        <module name="ch08-spring-aop-advice" />
-        <module name="ch05-spring-dbutil-druid" />
-        <module name="ch04-spring-log-logback" />
-        <module name="ch13-annotation-container-ioc-aop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ch05-spring-dbutil-druil" target="8" />
       <module name="ch05-spring-dbutils-druid" target="8" />
       <module name="ch05-spring-dbutils-druil" target="8" />
+      <module name="ch14-annation-tx" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

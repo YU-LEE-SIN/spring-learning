@@ -21,6 +21,8 @@
         <module>ch10-spring-aop-advisor</module>
         <module>ch11-spring-tx</module>
         <module>ch13-annotation-container-ioc-aop</module>
+        <module>ch14-annotaion-tx</module>
+        <module>ch15-code-container-ioc-aop-tx</module>
 
     </modules>
 
