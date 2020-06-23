@@ -23,7 +23,8 @@
         <module>ch13-annotation-container-ioc-aop</module>
         <module>ch14-annotaion-tx</module>
         <module>ch15-code-container-ioc-aop-tx</module>
-        <module>ch15-spring-mybatis-code</module>
+        <module>ch16-spring-mybatis-code</module>
+        <module>ch17-springmvc-helloworld</module>
 
     </modules>
 
@@ -49,6 +50,7 @@
         <pagehelper.version>5.1.10</pagehelper.version>
         <mybatis.version>3.5.2</mybatis.version>
         <aspectj.version>1.9.4</aspectj.version>
+        <aspectjweaver.version>1.9.4</aspectjweaver.version>
 
     </properties>
 
@@ -163,6 +165,22 @@
                 <artifactId>spring-tx</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+
+
+            <!--解析aspectj表达式-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
