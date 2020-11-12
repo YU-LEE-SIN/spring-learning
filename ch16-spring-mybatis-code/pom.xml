@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ch15-spring-mybatis-code</artifactId>
+    <artifactId>ch16-spring-mybatis-code</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -82,5 +82,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

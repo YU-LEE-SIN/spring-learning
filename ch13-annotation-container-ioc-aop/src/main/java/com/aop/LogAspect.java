@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
  * @author yu
  * @date 2020/6/18
  */
-//表明被spring 管理起来
-@Component
-// 表明此类是切面类
-@Aspect
+
+@Component//表明被spring 管理起来
+
+@Aspect// 表明此类是切面类
 public class LogAspect {
     /**
      * 表名切入点

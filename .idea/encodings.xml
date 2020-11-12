@@ -29,8 +29,10 @@
     <file url="file://$PROJECT_DIR$/ch14-annotaion-tx/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ch15-code-container-ioc-aop-tx/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ch15-code-container-ioc-aop-tx/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ch15-spring-mybatis-code/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ch15-spring-mybatis-code/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch16-spring-mybatis-code/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch16-spring-mybatis-code/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch17-springmvc-helloworld/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ch17-springmvc-helloworld/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

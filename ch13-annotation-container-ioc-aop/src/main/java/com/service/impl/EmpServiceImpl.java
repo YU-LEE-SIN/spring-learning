@@ -20,6 +20,8 @@ import java.util.Map;
 @Service
 @Scope("singleton")
 public class EmpServiceImpl implements EmpService {
+
+
     public EmpServiceImpl(EmpDao dao) {
         System.out.println("-----debug: dao = " + dao  + " " );
     }
@@ -38,13 +40,15 @@ public class EmpServiceImpl implements EmpService {
      * 1.字段上
      * 2.方法上(setter方法)
      *
+     * @Qualifier: 接口有两个实现类 ,spring 并不知道应当引用哪个实现类 ,所以可以使用@Qualifier注解
      *
-     *  @Qualifier("userInfoDaoImpl") 相当于 UserService bean 的 id=userInfoDaoImpl。
+     * @Resource: 而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型
      */
 
-    @Autowired
+    //@Autowired
+    //Resource(name="dao")
     // @Qualifier("EmpDaoImpl")
-    private EmpDao dao;
+    //private EmpDao dao;
 
     /**
      * 初始化
@@ -64,20 +68,21 @@ public class EmpServiceImpl implements EmpService {
     }
 
     //list这种方式是把所有被spring管理的这种类型的bean都注入进来
+
     @Autowired
     private List<EmpDao> empDaoList;
+
     //map方式,1.它的类型必须是String作为key,因为其存放的是bean的名字
+
     @Autowired
     private Map<String, EmpDao> empDaoMap;
 
-    /**
-     * 自动注入的Bean
-     */
+
     public void displayAutowireCollectionInject() {
         for (EmpDao empDao : empDaoList) {
             empDao.update();
         }
-        System.out.println("华丽的分割线下面是map");
+        System.out.println("=====华丽的分割线下面是map=====");
         for (Map.Entry<String, EmpDao> entry : empDaoMap.entrySet()) {
             System.out.println("key = " + entry.getKey() + "value" + entry.getValue());
         }
