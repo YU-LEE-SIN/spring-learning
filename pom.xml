@@ -44,7 +44,7 @@
         <jstl.version>1.2</jstl.version>
         <servlet.version>3.1.0</servlet.version>
         <dbutils.version>1.7</dbutils.version>
-        <mysql.version>5.1.47</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <mybatis.spring.version>2.0.2</mybatis.spring.version>
         <mysql.version>5.1.47</mysql.version>
         <pagehelper.version>5.1.10</pagehelper.version>
